@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <style>
+      /* Add some style to the page */
+      body {
+        background-color: lightblue;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .choice {
+        font-size: 32px;
+        cursor: pointer;
+      }
+      .choice:hover {
+        color: blue;
+      }
+      .result {
+        font-size: 48px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Display the choices -->
+      <div class="choice" onclick="play('rock')">✊</div>
+      <div class="choice" onclick="play('paper')">🤚</div>
+      <div class="choice" onclick="play('scissors')">✌</div>
+      <!-- Display the result -->
+      <div class="result">Make your choice</div>
+    </div>
+
+    <script>
+      // Function to play the game
+      function play(playerChoice) {
+        // Generate the AI choice
+        var choices = ['rock', 'paper', 'scissors'];
+        var aiChoice = choices[Math.floor(Math.random() * choices.length)];
+
+        // Determine the winner
+        var result;
+        if (playerChoice == aiChoice) {
+          result = 'Tie';
+        } else if (playerChoice == 'rock' && aiChoice == 'scissors' || playerChoice == 'paper' && aiChoice == 'rock' || playerChoice == 'scissors' && aiChoice == 'paper') {
+          result = 'You win';
+        } else {
+          result = 'You lose';
+        }
+
+        // Display the result
+        document.querySelector('.result').textContent = `You chose ${playerChoice}, AI chose ${aiChoice}. ${result}`;
+      }
+    </script>
+  </body>
+</html>
